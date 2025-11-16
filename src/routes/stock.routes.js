@@ -8,10 +8,6 @@ const StockController = require('../controllers/stock.controller');
 // Requerimos esAdminOEmpleado para la gestión de inventario
 const { verificarToken, esAdminOEmpleado } = require('../middlewares/auth.middleware'); 
 
-// ===============================================
-//         RUTAS DE GESTIÓN DE STOCK (INVENTARIO)
-// ===============================================
-
 // Rutas de Lectura (Requieren Admin o Empleado)
 
 // 1. Obtener todos los registros de stock

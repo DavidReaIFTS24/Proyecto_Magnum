@@ -8,10 +8,6 @@ const ClienteController = require('../controllers/cliente.controller');
 // Asumo que este archivo de middlewares está en la ruta: ../middlewares/auth.middleware
 const { verificarToken, esAdmin, esAdminOEmpleado } = require('../middlewares/auth.middleware'); 
 
-// ===============================================
-//         RUTAS DE GESTIÓN DE CLIENTES
-// ===============================================
-
 // 1. Obtener todos los clientes (Solo Admin o Empleado)
 // GET /api/clientes
 router.get('/', verificarToken, esAdminOEmpleado, ClienteController.obtenerTodos);

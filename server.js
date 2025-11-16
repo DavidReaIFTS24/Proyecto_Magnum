@@ -107,7 +107,6 @@ app.listen(PORT, () => {
   console.log('   GET    /api/clientes');
   console.log('   GET    /api/stock');
   console.log('   GET    /api/pedidos');
-  console.log('\n💡 Tip: Usa Postman para probar los endpoints');
   console.log('════════════════════════════════════════════════\n');
 });
 
