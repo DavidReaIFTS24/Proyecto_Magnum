@@ -142,32 +142,40 @@ class PedidoService {
     return pedidos;
   }
 
-  /**
-   * Método estático para cambiar el estado de un pedido.
-   * Incluye validación de estados permitidos.
-   * @param {number|string} id - El ID del pedido.
-   * @param {string} nuevoEstado - El nuevo estado a asignar.
-   * @returns {object} El objeto del pedido actualizado.
-   */
-  static async cambiarEstado(id, nuevoEstado) {
+  // Asegúrate de importar la clase BadRequestError si la creaste
+// const BadRequestError = require('../errors/bad-request.error');
+
+/**
+ * Método estático para cambiar el estado de un pedido.
+ * Incluye validación de estados permitidos.
+ * @param {number|string} id - El ID del pedido.
+ * @param {string} nuevoEstado - El nuevo estado a asignar.
+ * @returns {object} El objeto del pedido actualizado.
+ */
+static async cambiarEstado(id, nuevoEstado) {
     console.log(`📝 Servicio: Cambiando estado del pedido ${id} a ${nuevoEstado}...`);
 
     // 1. Definir y validar la lista de estados válidos
     const estadosValidos = ['pendiente', 'procesando', 'enviado', 'entregado', 'cancelado'];
+    
     if (!estadosValidos.includes(nuevoEstado)) {
-      throw new Error('Estado inválido');
+        // Opción 1: Si usas una clase de error personalizada (Recomendado)
+        // throw new BadRequestError(`Estado inválido. Los estados permitidos son: ${estadosValidos.join(', ')}`);
+        
+        // Opción 2: Usando Error estándar con un mensaje específico para que el Controller lo reconozca
+        throw new Error(`Estado inválido. Los estados permitidos son: ${estadosValidos.join(', ')}`);
     }
 
     // 2. Llama al método del modelo para actualizar el estado
     const pedido = await PedidoModel.cambiarEstado(id, nuevoEstado);
 
     if (!pedido) {
-      throw new Error('Pedido no encontrado');
+        throw new Error('Pedido no encontrado');
     }
 
     console.log(`✅ Estado actualizado a: ${nuevoEstado}`);
     return pedido;
-  }
+}
 
   /**
    * Método estático para actualizar cualquier campo de un pedido.

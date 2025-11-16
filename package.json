@@ -9,7 +9,11 @@
     "seed": "node scripts/seed.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["api", "rest", "marroquineria"],
+  "keywords": [
+    "api",
+    "rest",
+    "marroquineria"
+  ],
   "author": "David",
   "license": "ISC",
   "type": "commonjs",
